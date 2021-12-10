@@ -2,23 +2,7 @@ provider "aws" {
   region = "sa-east-1"
 }
 
-resource "aws_instance" "web2" {
-  subnet_id = "subnet-02d7741675f030d69"
-  ami = "ami-083654bd07b5da81d"
-  instance_type = "t2.micro"
-  key_name = "chave_key" # a chave que vc tem na maquina pessoal
-  associate_public_ip_address = true
-  vpc_security_group_ids = ["sg-083654bd07b5da81d"]
-  root_block_device {
-    encrypted = true
-    volume_size = 8
-  }
-  tags = {
-    Name = "ec2-zerati-tf"
-  }
-}
-
 resource "aws_key_pair" "chave_key" {
-  key_name   = "chave_key"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABUAHUAHuaHaUc=" # sua chave publica da maquina 
+  key_name   = "chave_key_ze_tf"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC/96ilpS63BuOdtmWp3LtRUg5hvFGfhHz2v5SM7bi/h0Mm4am/Bzc4SoldpsE2CNkdiqCYMQVJ3Dpo/ROXUP/w57NsdrqUrH27clc8ixDN8sYzSENkjXKnPB/v5zCWE1ds4VH72yRDrce9DuOPZPCZ3cGf3ASSWoz90KLa1f+BWai8i4YyyY/YPhDrmB180IBALUfqg6grEDJvvQPx4yP3/IFj/Alu97R+5juziLNpXsGqrfdBEp+D5BEJQUevDOqz0+LL302HAlEiYA1qh4+FoH7awF5NAuDZdMjXV/ACQbsnvRV/mS60t5ugI99gKGu9K9u11EpSVag2Qud5e3aiO1PelObnRt/S5TFP+rOlLkP8WprXBpqHnF8nvGJe8LVPtIxtlxhIlsyiiAgd2I77qwzHctiFxOV1GBtXEgx1xmjhrMbqGbr8myDrvZhuHgL15t6EGUgHzXJkrBbh3KiNpJTiUfjZlkPWJ3mDWwD69BDU3o55n7Oy/XS8S77jDhk= ubuntu@montanhez-dev" # sua chave publica da maquina 
 }
